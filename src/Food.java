@@ -9,7 +9,10 @@ public enum Food {
 
     // Desserts
     Des01("Caramel Pudding", "Dessert", 0),
-    Des02("Fruit Cocktail", "Dessert", 0);
+    Des02("Fruit Cocktail", "Dessert", 0),
+
+    // Special
+    Spe01("Cake", "Special", 0);
 
     String foodName;
     String foodType;

@@ -1,17 +1,19 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Birthday extends Event{
-    String birthdayName;
+public class Anniversary extends Event{
+    String anniversaryName;
+    String organizer;
 
-    public Birthday(String _location, Date _dateOfEvent, String _birthdayName) {
+    public Anniversary(String _location, Date _dateOfEvent, String _anniversaryName, String _organizer) {
         super(_location, _dateOfEvent);
-        birthdayName = _birthdayName;
+        anniversaryName = _anniversaryName;
+        organizer = _organizer;
     }
 
     @Override
     public String eventName() {
-        return birthdayName + "'s Birthday";
+        return anniversaryName + " Anniversary";
     }
 
     @Override
@@ -20,15 +22,15 @@ public class Birthday extends Event{
         String stringDate = DateFor.format(dateOfEvent);
 
         for (int i = 0; i < attendees.size(); i++) {
-            System.out.println("\n======== " + birthdayName.toUpperCase() + "'s BIRTHDAY PARTY INVITATION ========");
+            System.out.println("\n======== " + anniversaryName.toUpperCase() + " ANNIVERSARY INVITATION ========");
             System.out.println("To Mr./Mrs./Ms : " + attendees.get(i).getName().toUpperCase());
-            System.out.println("You invited to attend " + birthdayName.toUpperCase() + "'s Birthday party celebration!");
+            System.out.println("You invited to attend " + anniversaryName.toUpperCase() + "'s Anniversary celebration!");
             System.out.println("\nBelow are the details of the event: ");
             System.out.println("Date of event : " + stringDate);
             System.out.println("Location : " + location);
             System.out.println("\nShould you have any food preferences, please let us know when you respond to this invitation!");
             System.out.println("\nWe look forward to hearing your reply!");
-            System.out.println("\n\nSincerely, \n" + birthdayName);
+            System.out.println("\n\nSincerely, \n" + organizer);
             System.out.println("==========================================================\n");
         }
     }
