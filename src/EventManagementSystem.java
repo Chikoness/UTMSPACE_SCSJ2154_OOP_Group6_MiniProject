@@ -25,23 +25,58 @@ public class EventManagementSystem {
 
             switch (option) {
                 case 1 -> {
-                    System.out.print("Name of event: ");
-                    String nameOfEvent = input.nextLine();
+                    System.out.println("What kind of event do you plan to host?");
+                    System.out.println("1. Birthday");
+                    System.out.println("2. Wedding");
+                    System.out.println("3. Anniversary");
+                    System.out.println("4. Party (Default event)");
+                    System.out.print("Enter 1, 2, 3, or 4 : ");
+                    int eventType = Integer.parseInt(input.nextLine());
+
+                    while (eventType < 0 || eventType > 4) {
+                        System.out.println("Event type not recognized. Try again.\n");
+
+                        System.out.println("What kind of event do you plan to host?");
+                        System.out.println("1. Birthday");
+                        System.out.println("2. Wedding");
+                        System.out.println("3. Anniversary");
+                        System.out.println("4. Party (Default event)");
+                        System.out.print("Enter 1, 2, 3, or 4 : ");
+                        eventType = Integer.parseInt(input.nextLine());
+                    }
+
                     System.out.print("Enter location of event: ");
                     String location = input.nextLine();
                     System.out.print("Enter date of event (Eg, 08 July 2021): ");
                     String date = input.nextLine();
                     Date dateIntoDateFormat = new SimpleDateFormat("dd MMMM yyyy").parse(date);
 
-                    Event event = new Event(nameOfEvent, location, dateIntoDateFormat);
-                    events.add(event);
+                    switch (eventType) {
+                        case 1 -> {
+                            System.out.print("Name of the birthday boy/girl? : ");
+                            String birthdayName = input.nextLine();
+
+                            Birthday birthday = new Birthday(location, dateIntoDateFormat, birthdayName);
+                            events.add(birthday);
+                        }
+
+                        case 2 -> {
+                            System.out.print("WEDDING");
+                        }
+
+                        case 3 -> {
+                            System.out.print("ANNIVERSARY");
+                        }
+
+                        default -> System.out.println("Event not recognized.");
+                    }
                 }
                 case 2 -> {
                     if (events.size() > 0) {
                         System.out.println("Which event would you like to add attendees to?");
 
                         for (int i = 0; i < events.size(); i++) {
-                            System.out.println((i+1) + ". " + events.get(i).getNameOfEvent());
+                            System.out.println((i+1) + ". " + events.get(i).eventName());
                         }
                         System.out.print("\nEnter the number of event to select : ");
                         int option2 = Integer.parseInt(input.nextLine());
@@ -52,7 +87,7 @@ public class EventManagementSystem {
                             option2 = Integer.parseInt(input.nextLine());
                         }
 
-                        System.out.println("\nAdding to attendee to - " + events.get(option2-1).getNameOfEvent());
+                        System.out.println("\nAdding to attendee to - " + events.get(option2-1).getClass().getSimpleName());
                         System.out.println("ATTENDEE #" + ((events.get(option2-1).getNumberOfAttendees()) + 1));
                         System.out.println("=========================");
                         System.out.print("Name: ");
@@ -75,7 +110,7 @@ public class EventManagementSystem {
                         System.out.println("Which event would you to select?");
 
                         for (int i = 0; i < events.size(); i++) {
-                            System.out.println((i+1) + ". " + events.get(i).getNameOfEvent());
+                            System.out.println((i+1) + ". " + events.get(i).eventName());
                         }
                         System.out.print("\nEnter the number of event to select : ");
                         int option3 = Integer.parseInt(input.nextLine());
