@@ -28,7 +28,7 @@ public class EventManagementSystem {
             System.out.println("__________________________________________");
 
             switch (option) {
-                case 1 -> {
+                case 1 -> { // 1. Create an event
                     System.out.println("What kind of event do you plan to host?");
                     System.out.println("1. Birthday");
                     System.out.println("2. Wedding");
@@ -37,7 +37,7 @@ public class EventManagementSystem {
                     System.out.print("Enter 1, 2, 3, or 4 : ");
                     int eventType = Integer.parseInt(input.nextLine());
 
-                    while (eventType < 0 || eventType > 4) {
+                    while (eventType < 0 || eventType > 4) { // If eventType is not between 1 - 4, loop menu selection again
                         System.out.println("Event type not recognized. Try again.\n");
 
                         System.out.println("What kind of event do you plan to host?");
@@ -56,7 +56,7 @@ public class EventManagementSystem {
                     Date dateIntoDateFormat = new SimpleDateFormat("dd MMMM yyyy").parse(date);
 
                     switch (eventType) {
-                        case 1 -> {
+                        case 1 -> { // Birthday selected
                             System.out.print("Name of the birthday boy/girl? ");
                             String birthdayName = input.nextLine();
 
@@ -64,7 +64,7 @@ public class EventManagementSystem {
                             events.add(birthday);
                         }
 
-                        case 2 -> {
+                        case 2 -> { // Wedding selected
                             System.out.print("Name of the groom: ");
                             String groomsName = input.nextLine();
                             System.out.print("Name of the bride: ");
@@ -74,7 +74,7 @@ public class EventManagementSystem {
                             events.add(wedding);
                         }
 
-                        case 3 -> {
+                        case 3 -> { // Anniversary selected
                             System.out.print("What's the anniversary? (Eg, Baby Michael's Full Moon (Anniversary), omit the \"Anniversary\"): ");
                             String anniversaryName = input.nextLine();
                             System.out.print("Name of the organizer (of the event): ");
@@ -84,8 +84,8 @@ public class EventManagementSystem {
                             events.add(anniversary);
                         }
 
-                        case 4 -> {
-                            System.out.print("What's the party about? (Eg, Sandy's High School Graduation: ");
+                        case 4 -> { // Party selected
+                            System.out.print("What's the party about? (Eg, Sandy's High School Graduation, omit the \"Party\"): ");
                             String partyName = input.nextLine();
                             System.out.print("Name of the organizer (of the event): ");
                             String organizer = input.nextLine();
@@ -94,11 +94,11 @@ public class EventManagementSystem {
                             events.add(party);
                         }
 
-                        default -> System.out.println("Event not recognized.");
+                        default -> System.out.println("Event not recognized."); // input not between 1 - 4, go back to menu selection
                     }
                 }
 
-                case 2 -> {
+                case 2 -> { // 2. Choose food for event
                     if (events.size() > 0) {
                         System.out.println("Which event would you to choose food for?");
 
@@ -106,12 +106,12 @@ public class EventManagementSystem {
                             System.out.println((i+1) + ". " + events.get(i).eventName());
                         }
 
-                        System.out.print("\nEnter the number of event to select : ");
+                        System.out.print("\nEnter the number of event to select: ");
                         int option4 = Integer.parseInt(input.nextLine());
 
                         while (option4 < 0 || option4 > events.size()) {
                             System.out.println("\nEvent doesn't exist. Try again.");
-                            System.out.print("Enter the number of event to select : ");
+                            System.out.print("Enter the number of event to select: ");
                             option4 = Integer.parseInt(input.nextLine());
                         }
 
@@ -119,7 +119,7 @@ public class EventManagementSystem {
                         System.out.println("APPETIZERS: ");
                         System.out.println("1. Honey Garlic Mini Sausages");
                         System.out.println("2. Nachos Dip");
-                        System.out.print("Choose 1 or 2, 3 for both, or 0 for none : ");
+                        System.out.print("Choose 1 or 2, 3 for both, or any other number for none: ");
                         int appetizers = Integer.parseInt(input.nextLine());
 
                         switch (appetizers) {
@@ -146,7 +146,7 @@ public class EventManagementSystem {
                         System.out.println("\nMAIN COURSES: ");
                         System.out.println("1. Macaroni and Cheese with Beef Bacon");
                         System.out.println("2. Soy Sauce Chicken Fried Rice");
-                        System.out.print("Choose 1 or 2, or 3 for both : ");
+                        System.out.print("Choose 1 or 2, 3 for both, or any other number for none: ");
                         int mainCourse = Integer.parseInt(input.nextLine());
 
                         switch (mainCourse) {
@@ -173,7 +173,7 @@ public class EventManagementSystem {
                         System.out.println("\nDESSERTS: ");
                         System.out.println("1. Caramel Pudding");
                         System.out.println("2. Fruit Cocktail");
-                        System.out.print("Choose 1 or 2, or 3 for both : ");
+                        System.out.print("Choose 1 or 2, 3 for both, or any other number for none: ");
                         int desserts = Integer.parseInt(input.nextLine());
 
                         switch (desserts) {
@@ -198,12 +198,12 @@ public class EventManagementSystem {
                         }
 
                         System.out.println("\nWill there be a special cake for the occasion?");
-                        System.out.print("Enter 1 for yes, 0 or any other number for no : ");
+                        System.out.print("Enter 1 for yes, or any other number for no: ");
                         int cake = Integer.parseInt(input.nextLine());
 
                         if (cake == 1) {
                             events.get(option4-1).setFood(Food.Spe01);
-                            System.out.println(events.get(option4-1).eventName() + " cake has been added to the menu.");
+                            System.out.println(events.get(option4-1).eventName() + " Cake has been added to the menu.");
                         }
                         else {
                             System.out.println("No cake added to the menu.");
@@ -212,12 +212,12 @@ public class EventManagementSystem {
                         System.out.println("\nMenu for " + events.get(option4-1).eventName() + " has been set.\n");
                     }
 
-                    else {
+                    else { // if no event has been created yet, print this and loop back to menu
                         System.out.println("\nNo events have been created. Please create an event first.\n");
                     }
                 }
 
-                case 3 -> {
+                case 3 -> { // 3. Add attendee to event
                     if (events.size() > 0) {
                         System.out.println("Which event would you like to add attendees to?");
 
@@ -247,12 +247,12 @@ public class EventManagementSystem {
                         Attendee attendee = new Attendee(name, email, age);
                         events.get(option2-1).setAttendees(attendee);
                     }
-                    else {
+                    else { // if no event has been created yet, print this and loop back to menu
                         System.out.println("\nNo events have been created. Please create an event first.\n");
                     }
                 }
 
-                case 4 -> {
+                case 4 -> { // 4. Print event's invitation cards
                     if (events.size() > 0) {
                         System.out.println("Which event would you to select?");
 
@@ -287,13 +287,13 @@ public class EventManagementSystem {
 
                     }
 
-                    else {
+                    else { // if no event has been created yet, print this and loop back to menu
                         System.out.println("\nNo events have been created. Please create an event first.\n");
                     }
                 }
 
-                case 5 -> System.out.println("\nThank you for using Event Management System. We hope to see you again! :)");
-                default -> System.out.println("\nSorry, option not recognized. Please enter between 1 to 4.\n");
+                case 5 -> System.out.println("\nThank you for using Event Management System. We hope to see you again! :)"); // 5, Exit
+                default -> System.out.println("\nSorry, option not recognized. Please enter between 1 to 4.\n"); // Option not recognized, back to the menu selection
             }
         }
 

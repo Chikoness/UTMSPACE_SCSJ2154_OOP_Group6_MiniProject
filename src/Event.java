@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-abstract class Event {
+abstract class Event { // abstract class for child event classes (Anniversary, Birthday, Party, Wedding) to inherit from
     String location;
     Date dateOfEvent;
     ArrayList<Attendee> attendees = new ArrayList<>();
@@ -24,7 +24,7 @@ abstract class Event {
         return attendees.size();
     }
 
-    abstract public String eventName();
+    abstract public String eventName(); // abstract method for child classes to print their name of their event, Eg. Charlene's Birthday (Birthday class)
 
-    abstract public String DisplayInvitation();
+    abstract public String DisplayInvitation(); // abstract method for child classes to print invitation cards in the form of Strings
 }

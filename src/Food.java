@@ -1,17 +1,17 @@
 public enum Food {
-    // Appetizers
+    // Appetizers list
     App01("Honey Garlic Mini Sausages", "Appetizers"),
     App02("Nachos Dip", "Appetizers"),
 
-    // Main courses
+    // Main courses list
     Main01("Macaroni and Cheese with Beef Bacon", "Main Course"),
     Main02("Soy Sauce Chicken Fried Rice", "Main Course"),
 
-    // Desserts
+    // Desserts list
     Des01("Caramel Pudding", "Dessert"),
     Des02("Fruit Cocktail", "Dessert"),
 
-    // Special
+    // Special, mostly cake
     Spe01("Cake", "Special");
 
     String foodName;
@@ -24,9 +24,5 @@ public enum Food {
 
     public String getFoodName() {
         return foodName;
-    }
-
-    public String getFoodType() {
-        return foodType;
     }
 }

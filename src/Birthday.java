@@ -1,7 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Birthday extends Event{
+public class Birthday extends Event{ // Birthday has birthdayName
     String birthdayName;
 
     public Birthday(String _location, Date _dateOfEvent, String _birthdayName) {
@@ -16,11 +16,11 @@ public class Birthday extends Event{
 
     @Override
     public String DisplayInvitation() {
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd MMMM yyyy");
-        String stringDate = DateFor.format(dateOfEvent);
-        StringBuilder output = new StringBuilder();
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd MMMM yyyy"); // Date output formatting
+        String stringDate = DateFor.format(dateOfEvent); // Date output formatting
+        StringBuilder output = new StringBuilder(); // StringBuilder to build strings for output of invitation
 
-        for (int i = 0; i < attendees.size(); i++) {
+        for (int i = 0; i < attendees.size(); i++) { // Print the invitation card
             output.append("======== " + birthdayName.toUpperCase() + "'s BIRTHDAY PARTY INVITATION ========\n");
             output.append("To Mr./Mrs./Ms : " + attendees.get(i).getName().toUpperCase() + "\n");
             output.append("You invited to attend " + birthdayName.toUpperCase() + "'s Birthday party celebration!" + "\n");
@@ -28,7 +28,7 @@ public class Birthday extends Event{
             output.append("Date of event : " + stringDate + "\n");
             output.append("Location : " + location + "\n\n");
 
-            if (food.size() > 0) {
+            if (food.size() > 0) { // if the user has included food, print the food list
                 output.append("Food to be served at the party: \n");
                 for (int j = 0; j < food.size(); j++) {
                     output.append((j+1) + ". " + food.get(j).getFoodName().toUpperCase() + "\n");

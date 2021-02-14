@@ -1,7 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Party extends Event{
+public class Party extends Event{ // Party has partyName and organizer
     String partyName;
     String organizer;
 
@@ -18,9 +18,9 @@ public class Party extends Event{
 
     @Override
     public String DisplayInvitation() {
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd MMMM yyyy");
-        String stringDate = DateFor.format(dateOfEvent);
-        StringBuilder output = new StringBuilder();
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd MMMM yyyy"); // Date output formatting
+        String stringDate = DateFor.format(dateOfEvent); // Date output formatting
+        StringBuilder output = new StringBuilder(); // StringBuilder to build strings for output of invitation
 
         for (int i = 0; i < attendees.size(); i++) {
             output.append("======== " + partyName.toUpperCase() + " PARTY ========\n");
@@ -30,7 +30,7 @@ public class Party extends Event{
             output.append("Date of event : " + stringDate + "\n");
             output.append("Location : " + location + "\n\n");
 
-            if (food.size() > 0) {
+            if (food.size() > 0) { // if the user has included food, print the food list
                 output.append("Food to be served at the party: \n");
                 for (int j = 0; j < food.size(); j++) {
                     output.append((j+1) + ". " + food.get(j).getFoodName().toUpperCase() + "\n");
