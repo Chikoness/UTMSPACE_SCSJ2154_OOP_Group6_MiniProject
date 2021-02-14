@@ -1,26 +1,32 @@
 public enum Food {
     // Appetizers
-    App01("Honey Garlic Mini Sausages", "Appetizers", 1),
-    App02("Nachos Dip", "Appetizers", 1),
+    App01("Honey Garlic Mini Sausages", "Appetizers"),
+    App02("Nachos Dip", "Appetizers"),
 
     // Main courses
-    Main01("Macaroni and Cheese with Beef Bacon", "Main Course", 1),
-    Main02("Soy Sauce Chicken Fried Rice", "Main Course", 1),
+    Main01("Macaroni and Cheese with Beef Bacon", "Main Course"),
+    Main02("Soy Sauce Chicken Fried Rice", "Main Course"),
 
     // Desserts
-    Des01("Caramel Pudding", "Dessert", 0),
-    Des02("Fruit Cocktail", "Dessert", 0),
+    Des01("Caramel Pudding", "Dessert"),
+    Des02("Fruit Cocktail", "Dessert"),
 
     // Special
-    Spe01("Cake", "Special", 0);
+    Spe01("Cake", "Special");
 
     String foodName;
     String foodType;
-    int foodCategory;
 
-    Food(String _foodName, String _foodType, int _foodCategory) {
+    Food(String _foodName, String _foodType) {
         foodName = _foodName;
         foodType = _foodType;
-        foodCategory = _foodCategory; // 0 for Vegetarian-Friendly, 1 for Non-Vegetarian
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public String getFoodType() {
+        return foodType;
     }
 }

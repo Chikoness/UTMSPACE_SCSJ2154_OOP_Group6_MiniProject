@@ -1,10 +1,13 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class EventManagementSystem {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ParseException { // ParseException is to catch Date input error
         Scanner input = new Scanner(System.in);
         ArrayList<Event> events = new ArrayList<>();
 
@@ -12,7 +15,7 @@ public class EventManagementSystem {
         System.out.println("__________EVENT MANAGEMENT SYSTEM_________");
 
         int option = Integer.MAX_VALUE; // variable with random int to initialize option
-        while (option != 5) {
+        while (option != 5) { // menu system begins here
             System.out.println("__________________________________________");
             System.out.println("\n1. Create an event");
             System.out.println("2. Choose food for event");
@@ -121,18 +124,18 @@ public class EventManagementSystem {
 
                         switch (appetizers) {
                             case 1 -> {
-                                events.get(option4).setFood(Food.App01);
+                                events.get(option4-1).setFood(Food.App01);
                                 System.out.println(Food.App01.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 2 -> {
-                                events.get(option4).setFood(Food.App02);
+                                events.get(option4-1).setFood(Food.App02);
                                 System.out.println(Food.App02.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 3 -> {
-                                events.get(option4).setFood(Food.App01);
-                                events.get(option4).setFood(Food.App02);
+                                events.get(option4-1).setFood(Food.App01);
+                                events.get(option4-1).setFood(Food.App02);
                                 System.out.println(Food.App01.foodName.toUpperCase() + " added to the menu.");
                                 System.out.println(Food.App02.foodName.toUpperCase() + " added to the menu.");
                             }
@@ -148,18 +151,18 @@ public class EventManagementSystem {
 
                         switch (mainCourse) {
                             case 1 -> {
-                                events.get(option4).setFood(Food.Main01);
+                                events.get(option4-1).setFood(Food.Main01);
                                 System.out.println(Food.Main01.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 2 -> {
-                                events.get(option4).setFood(Food.Main02);
+                                events.get(option4-1).setFood(Food.Main02);
                                 System.out.println(Food.Main02.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 3 -> {
-                                events.get(option4).setFood(Food.Main01);
-                                events.get(option4).setFood(Food.Main02);
+                                events.get(option4-1).setFood(Food.Main01);
+                                events.get(option4-1).setFood(Food.Main02);
                                 System.out.println(Food.Main01.foodName.toUpperCase() + " added to the menu.");
                                 System.out.println(Food.Main02.foodName.toUpperCase() + " added to the menu.");
                             }
@@ -175,18 +178,18 @@ public class EventManagementSystem {
 
                         switch (desserts) {
                             case 1 -> {
-                                events.get(option4).setFood(Food.Des01);
+                                events.get(option4-1).setFood(Food.Des01);
                                 System.out.println(Food.Des01.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 2 -> {
-                                events.get(option4).setFood(Food.Des02);
+                                events.get(option4-1).setFood(Food.Des02);
                                 System.out.println(Food.Des02.foodName.toUpperCase() + " added to the menu.");
                             }
 
                             case 3 -> {
-                                events.get(option4).setFood(Food.Des01);
-                                events.get(option4).setFood(Food.Des02);
+                                events.get(option4-1).setFood(Food.Des01);
+                                events.get(option4-1).setFood(Food.Des02);
                                 System.out.println(Food.Des01.foodName.toUpperCase() + " added to the menu.");
                                 System.out.println(Food.Des02.foodName.toUpperCase() + " added to the menu.");
                             }
@@ -195,18 +198,18 @@ public class EventManagementSystem {
                         }
 
                         System.out.println("\nWill there be a special cake for the occasion?");
-                        System.out.print("Enter 1 for yes, 0 for no : ");
-                        boolean cake = Boolean.parseBoolean(input.nextLine());
+                        System.out.print("Enter 1 for yes, 0 or any other number for no : ");
+                        int cake = Integer.parseInt(input.nextLine());
 
-                        if (cake) {
-                            events.get(option4).setFood(Food.Spe01);
-                            System.out.println(events.get(option4).eventName() + " cake has been added to the menu.");
+                        if (cake == 1) {
+                            events.get(option4-1).setFood(Food.Spe01);
+                            System.out.println(events.get(option4-1).eventName() + " cake has been added to the menu.");
                         }
                         else {
                             System.out.println("No cake added to the menu.");
                         }
 
-                        System.out.println("\nMenu for " + events.get(option4).eventName() + " has been set.\n");
+                        System.out.println("\nMenu for " + events.get(option4-1).eventName() + " has been set.\n");
                     }
 
                     else {
@@ -269,7 +272,17 @@ public class EventManagementSystem {
                             System.out.println("\nNo attendees have been added. Please add attendees to your event.");
                         }
                         else {
-                            events.get(option3-1).DisplayInvitation();
+                            System.out.println("\nPrinting Invitation cards....\n");
+
+                            System.out.println(events.get(option3-1).DisplayInvitation());
+
+                            try (FileWriter printOutInvitation = new FileWriter(events.get(option3-1).eventName() + "_InvitationCards" + ".txt")) {
+                                printOutInvitation.write(events.get(option3-1).DisplayInvitation());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            System.out.println("\nInvitation cards printed successfully. Please check root folder.\n");
                         }
 
                     }
@@ -283,5 +296,7 @@ public class EventManagementSystem {
                 default -> System.out.println("\nSorry, option not recognized. Please enter between 1 to 4.\n");
             }
         }
+
+        System.exit(0);
     }
 }

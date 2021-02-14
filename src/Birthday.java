@@ -15,21 +15,33 @@ public class Birthday extends Event{
     }
 
     @Override
-    public void DisplayInvitation() {
+    public String DisplayInvitation() {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd MMMM yyyy");
         String stringDate = DateFor.format(dateOfEvent);
+        StringBuilder output = new StringBuilder();
 
         for (int i = 0; i < attendees.size(); i++) {
-            System.out.println("\n======== " + birthdayName.toUpperCase() + "'s BIRTHDAY PARTY INVITATION ========");
-            System.out.println("To Mr./Mrs./Ms : " + attendees.get(i).getName().toUpperCase());
-            System.out.println("You invited to attend " + birthdayName.toUpperCase() + "'s Birthday party celebration!");
-            System.out.println("\nBelow are the details of the event: ");
-            System.out.println("Date of event : " + stringDate);
-            System.out.println("Location : " + location);
-            System.out.println("\nShould you have any food preferences, please let us know when you respond to this invitation!");
-            System.out.println("\nWe look forward to hearing your reply!");
-            System.out.println("\n\nSincerely, \n" + birthdayName);
-            System.out.println("==========================================================\n");
+            output.append("======== " + birthdayName.toUpperCase() + "'s BIRTHDAY PARTY INVITATION ========\n");
+            output.append("To Mr./Mrs./Ms : " + attendees.get(i).getName().toUpperCase() + "\n");
+            output.append("You invited to attend " + birthdayName.toUpperCase() + "'s Birthday party celebration!" + "\n");
+            output.append("\nBelow are the details of the event: \n");
+            output.append("Date of event : " + stringDate + "\n");
+            output.append("Location : " + location + "\n\n");
+
+            if (food.size() > 0) {
+                output.append("Food to be served at the party: \n");
+                for (int j = 0; j < food.size(); j++) {
+                    output.append((j+1) + ". " + food.get(j).getFoodName().toUpperCase() + "\n");
+                }
+            }
+
+            output.append("\n\nShould you have any food preferences, please let us know when you respond to this invitation!\n");
+            output.append("\nWe look forward to hearing your reply!\n");
+
+            output.append("\n\nSincerely, \n" + birthdayName + "\n");
+            output.append("==========================================================\n");
         }
+
+        return output.toString();
     }
 }

@@ -26,5 +26,5 @@ abstract class Event {
 
     abstract public String eventName();
 
-    abstract public void DisplayInvitation();
+    abstract public String DisplayInvitation();
 }
