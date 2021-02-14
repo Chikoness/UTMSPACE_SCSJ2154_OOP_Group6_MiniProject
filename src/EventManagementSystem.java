@@ -242,10 +242,35 @@ public class EventManagementSystem {
                         int age = Integer.parseInt(input.nextLine());
                         System.out.print("Email: ");
                         String email = input.nextLine();
-                        System.out.println("=========================");
+                        System.out.println("=========================\n");
 
                         Attendee attendee = new Attendee(name, email, age);
                         events.get(option2-1).setAttendees(attendee);
+
+                        System.out.println("Would you like to continue adding attendees to the event? ");
+                        System.out.print("Type 1 for yes, any other number for no: ");
+                        int continueAdding = Integer.parseInt(input.nextLine());
+
+                        while (continueAdding == 1) {
+                            System.out.println("\nAdding to attendee to - " + events.get(option2-1).getClass().getSimpleName());
+                            System.out.println("ATTENDEE #" + ((events.get(option2-1).getNumberOfAttendees()) + 1));
+                            System.out.println("=========================");
+                            System.out.print("Name: ");
+                            name = input.nextLine();
+                            System.out.print("Age: ");
+                            age = Integer.parseInt(input.nextLine());
+                            System.out.print("Email: ");
+                            email = input.nextLine();
+                            System.out.println("=========================\n");
+
+                            attendee = new Attendee(name, email, age);
+                            events.get(option2-1).setAttendees(attendee);
+
+                            System.out.println("Would you like to continue adding attendees to the event? ");
+                            System.out.print("Type 1 for yes, any other number for no: ");
+                            continueAdding = Integer.parseInt(input.nextLine());
+                        }
+
                     }
                     else { // if no event has been created yet, print this and loop back to menu
                         System.out.println("\nNo events have been created. Please create an event first.\n");

@@ -41,7 +41,7 @@ public class Wedding extends Event{ // Wedding has bridesName and groomsName
             output.append("\nWe look forward to hearing your reply!\n");
 
             output.append("\n\nSincerely, \n" + groomsName + " and " + bridesName + "\n");
-            output.append("==========================================================\n");
+            output.append("==========================================================\n\n\n");
         }
 
         return output.toString();

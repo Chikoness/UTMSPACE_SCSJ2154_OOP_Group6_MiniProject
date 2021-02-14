@@ -39,7 +39,7 @@ public class Birthday extends Event{ // Birthday has birthdayName
             output.append("\nWe look forward to hearing your reply!\n");
 
             output.append("\n\nSincerely, \n" + birthdayName + "\n");
-            output.append("==========================================================\n");
+            output.append("==========================================================\n\n\n");
         }
 
         return output.toString();

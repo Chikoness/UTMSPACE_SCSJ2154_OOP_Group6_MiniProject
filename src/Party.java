@@ -41,7 +41,7 @@ public class Party extends Event{ // Party has partyName and organizer
             output.append("\nWe look forward to hearing your reply!\n");
 
             output.append("\n\nSincerely, \n" + organizer + "\n");
-            output.append("==========================================================\n");
+            output.append("==========================================================\n\n\n");
         }
 
         return output.toString();

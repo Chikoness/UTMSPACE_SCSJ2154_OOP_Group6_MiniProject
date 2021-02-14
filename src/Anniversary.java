@@ -41,7 +41,7 @@ public class Anniversary extends Event{ // anniversary has anniversaryName and o
             output.append("\nWe look forward to hearing your reply!\n");
 
             output.append("\n\nSincerely, \n" + organizer + "\n");
-            output.append("==========================================================\n");
+            output.append("==========================================================\n\n\n");
         }
 
         return output.toString();
