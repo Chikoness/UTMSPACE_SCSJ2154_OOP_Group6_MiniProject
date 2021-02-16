@@ -233,7 +233,7 @@ public class EventManagementSystem {
                             option2 = Integer.parseInt(input.nextLine());
                         }
 
-                        System.out.println("\nAdding to attendee to - " + events.get(option2-1).getClass().getSimpleName());
+                        System.out.println("\nAdding to attendee to - " + events.get(option2-1).eventName());
                         System.out.println("ATTENDEE #" + ((events.get(option2-1).getNumberOfAttendees()) + 1));
                         System.out.println("=========================");
                         System.out.print("Name: ");
@@ -252,7 +252,7 @@ public class EventManagementSystem {
                         int continueAdding = Integer.parseInt(input.nextLine());
 
                         while (continueAdding == 1) {
-                            System.out.println("\nAdding to attendee to - " + events.get(option2-1).getClass().getSimpleName());
+                            System.out.println("\nAdding to attendee to - " + events.get(option2-1).eventName());
                             System.out.println("ATTENDEE #" + ((events.get(option2-1).getNumberOfAttendees()) + 1));
                             System.out.println("=========================");
                             System.out.print("Name: ");
