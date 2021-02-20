@@ -318,7 +318,7 @@ public class EventManagementSystem {
                 }
 
                 case 5 -> System.out.println("\nThank you for using Event Management System. We hope to see you again! :)"); // 5, Exit
-                default -> System.out.println("\nSorry, option not recognized. Please enter between 1 to 4.\n"); // Option not recognized, back to the menu selection
+                default -> System.out.println("\nSorry, option not recognized. Please enter between 1 to 5.\n"); // Option not recognized, back to the menu selection
             }
         }
 
